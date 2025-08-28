@@ -1,0 +1,21 @@
+2025-08-28 15:17:07.952 | INFO     | utils.utils_logger:<module>:38 - Logging to file: logs\project_log.log
+2025-08-28 15:17:07.953 | INFO     | __main__:main:106 - START producer...
+2025-08-28 15:17:07.953 | INFO     | __main__:main:107 - Hit CTRL c (or CMD c) to close.
+2025-08-28 15:17:07.953 | INFO     | __main__:get_message_interval:53 - Messages will be sent every 3 seconds.
+2025-08-28 15:17:07.953 | INFO     | __main__:main:114 - I just saw a movie! It was amazing.
+2025-08-28 15:17:10.954 | INFO     | __main__:main:114 - I just loved a story! It was amazing.
+2025-08-28 15:17:13.955 | INFO     | __main__:main:114 - I just loved a story! It was weird.
+2025-08-28 15:17:16.955 | INFO     | __main__:main:114 - I just saw a movie! It was weird.
+2025-08-28 15:17:17.209 | INFO     | utils.utils_logger:<module>:38 - Logging to file: logs\project_log.log
+2025-08-28 15:17:17.209 | INFO     | __main__:main:68 - START...
+2025-08-28 15:17:17.210 | INFO     | __main__:main:74 - Reading file located at logs\project_log.log.
+2025-08-28 15:17:19.956 | INFO     | __main__:main:114 - I just found a trick! It was funny.
+2025-08-28 15:17:22.957 | INFO     | __main__:main:114 - I just loved a meme! It was amazing.
+2025-08-28 15:17:25.957 | INFO     | __main__:main:114 - I just tried a meme! It was boring.
+2025-08-28 15:17:28.958 | INFO     | __main__:main:114 - I just tried a story! It was boring.
+2025-08-28 15:17:31.958 | INFO     | __main__:main:114 - I just saw a meme! It was exciting.
+2025-08-28 15:17:34.958 | INFO     | __main__:main:114 - I just saw a meme! It was exciting.
+2025-08-28 15:17:37.959 | INFO     | __main__:main:114 - I just found a trick! It was amazing.
+2025-08-28 15:17:40.959 | INFO     | __main__:main:114 - I just shared a trick! It was exciting.
+2025-08-28 15:17:43.944 | INFO     | __main__:main:85 - END.....
+2025-08-28 15:17:43.960 | INFO     | __main__:main:114 - I just loved an app! It was boring.
