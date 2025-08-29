@@ -1,4 +1,4 @@
-# buzzline-01-case
+# buzzline-01-data-git-hub
 
 ![Python 3.11](https://img.shields.io/badge/Python-3.11-blue?logo=python&logoColor=white)
 
