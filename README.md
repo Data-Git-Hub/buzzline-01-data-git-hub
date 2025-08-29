@@ -101,6 +101,31 @@ Open your custom consumer (e.g., `consumers/basic_consumer_pokemon.py`) and adju
 process_stream(str(log_file_path), window_size=20, report_every=5)
 ```
 
+### Real-Time Alerts: Keyword/Pattern Matches
+
+The custom consumer also raises warnings when certain keywords appear in the message payload. By default, the alerts trigger on:
+
+- **"Hyper Beam"**
+- **"evolved"**
+
+These matches are **case-insensitive** and tolerate minor spacing (for example, “HyperBeam” also triggers).
+
+**Why this is useful**
+- Highlights **business-significant events** immediately without heavy tooling.
+- Complements the rolling average by surfacing **discrete signals** (e.g., evolutions or powerful moves).
+- Easy to extend as your message schema evolves.
+
+**How to customize**
+Open `consumers/basic_consumer_pokemon.py` and edit the `KEYWORD_PATTERNS` list to add, remove, or adjust regular expressions:
+```python
+KEYWORD_PATTERNS = [
+    re.compile(r"\bhyper\s*beam\b", re.IGNORECASE),
+    re.compile(r"\bevolved\b", re.IGNORECASE),
+    # re.compile(r"\bshiny\b", re.IGNORECASE),  # example
+]
+```
+
+
 Windows: Terminal 1 (Producer)
 ```shell
 .venv\Scripts\activate

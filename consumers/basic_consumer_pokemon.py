@@ -1,13 +1,15 @@
 """
 basic_consumer_pokemon.py
 
-Custom consumer that tails the project log and prints a rolling average
-of message payload length (characters) over the last N messages.
+Custom consumer that tails the project log and performs lightweight real-time analytics:
+- Rolling average of payload length (characters) Add 1
+- Keyword/pattern alerts for selected events (e.g., "Hyper Beam", "evolved") Add 2
 """
 
 # Standard library
 import os
 import time
+import re
 from collections import deque
 from typing import Deque
 
@@ -19,8 +21,6 @@ def extract_payload(log_line: str) -> str:
     """
     Extract the message payload after the ' - ' separator inserted by loguru.
     If the separator is not found, return the whole line.
-    Example line:
-    2025-08-28 ... INFO ... - Trainer battled Pikachu using Thunderbolt. Outcome: epic.
     """
     sep = " - "
     idx = log_line.find(sep)
@@ -29,17 +29,25 @@ def extract_payload(log_line: str) -> str:
 
 def process_stream(log_file: str, window_size: int = 20, report_every: int = 5) -> None:
     """
-    Tail the log file and report rolling average payload length.
+    Tail the log file and run simple analytics.
 
     Args:
         log_file: path to the log file to follow
-        window_size: number of recent messages to average over
-        report_every: print average every N messages to reduce noise
+        window_size: number of recent messages for rolling average
+        report_every: print the average every N messages
     """
     window: Deque[int] = deque(maxlen=window_size)
     count = 0
 
+    # --- Keyword/Pattern Alerts ---
+    # Case-insensitive, tolerant of "HyperBeam" vs "Hyper Beam"
+    KEYWORD_PATTERNS = [
+        re.compile(r"\bhyper\s*beam\b", re.IGNORECASE),
+        re.compile(r"\bevolved\b", re.IGNORECASE),
+    ]
+
     with open(log_file, "r", encoding="utf-8") as f:
+        # Seek to the end and wait for new lines
         f.seek(0, os.SEEK_END)
         print(f"Consumer ready. Tailing {log_file} ...")
 
@@ -53,6 +61,7 @@ def process_stream(log_file: str, window_size: int = 20, report_every: int = 5) 
             if not raw:
                 continue
 
+            # Extract the payload and compute length
             payload = extract_payload(raw)
             length = len(payload)
             window.append(length)
@@ -60,6 +69,13 @@ def process_stream(log_file: str, window_size: int = 20, report_every: int = 5) 
 
             print(f"Consumed: {payload}")
 
+            # --- Keyword alerts ---
+            if any(p.search(payload) for p in KEYWORD_PATTERNS):
+                alert = f"ALERT (keyword): {payload}"
+                print(alert)
+                logger.warning(alert)
+
+            # --- Rolling average report ---
             if count % report_every == 0:
                 avg = sum(window) / len(window)
                 msg = f"Rolling avg payload length (last {len(window)}): {avg:.1f} chars"
