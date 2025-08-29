@@ -19,3 +19,58 @@
 2025-08-28 15:17:40.959 | INFO     | __main__:main:114 - I just shared a trick! It was exciting.
 2025-08-28 15:17:43.944 | INFO     | __main__:main:85 - END.....
 2025-08-28 15:17:43.960 | INFO     | __main__:main:114 - I just loved an app! It was boring.
+2025-08-29 17:45:39.632 | INFO     | utils.utils_logger:<module>:41 - Logging to file: logs\project_log.log
+2025-08-29 17:45:39.633 | INFO     | __main__:main:57 - START basic_producer_pokemon...
+2025-08-29 17:45:39.633 | INFO     | __main__:main:58 - Press CTRL+C to stop.
+2025-08-29 17:45:39.633 | INFO     | __main__:get_message_interval:27 - [POKÉMON PRODUCER] Interval = 3 sec
+2025-08-29 17:45:39.633 | INFO     | __main__:main:63 - Trainer trained Snorlax using Psychic. Outcome: effortless.
+2025-08-29 17:45:42.635 | INFO     | __main__:main:63 - Trainer battled Bulbasaur using Shadow Ball. Outcome: close.
+2025-08-29 17:45:45.635 | INFO     | __main__:main:63 - Trainer battled Bulbasaur using Quick Attack. Outcome: epic.
+2025-08-29 17:45:48.635 | INFO     | __main__:main:63 - Trainer encountered Jigglypuff using Hyper Beam. Outcome: epic.
+2025-08-29 17:45:51.636 | INFO     | __main__:main:63 - Trainer evolved Jigglypuff using Water Gun. Outcome: close.
+2025-08-29 17:45:54.637 | INFO     | __main__:main:63 - Trainer caught Jigglypuff using Vine Whip. Outcome: close.
+2025-08-29 17:45:57.637 | INFO     | __main__:main:63 - Trainer battled Jigglypuff using Quick Attack. Outcome: critical.
+2025-08-29 17:46:00.638 | INFO     | __main__:main:63 - Trainer trained Bulbasaur using Shadow Ball. Outcome: hilarious.
+2025-08-29 17:46:03.638 | INFO     | __main__:main:63 - Trainer trained Charmander using Hyper Beam. Outcome: effortless.
+2025-08-29 17:46:06.639 | INFO     | __main__:main:63 - Trainer trained Eevee using Flamethrower. Outcome: close.
+2025-08-29 17:46:09.639 | INFO     | __main__:main:63 - Trainer evolved Charmander using Water Gun. Outcome: tough.
+2025-08-29 17:46:12.640 | INFO     | __main__:main:63 - Trainer encountered Jigglypuff using Thunderbolt. Outcome: effortless.
+2025-08-29 17:48:19.930 | INFO     | utils.utils_logger:<module>:41 - Logging to file: logs\project_log.log
+2025-08-29 17:48:19.931 | INFO     | __main__:main:57 - START basic_producer_pokemon...
+2025-08-29 17:48:19.931 | INFO     | __main__:main:58 - Press CTRL+C to stop.
+2025-08-29 17:48:19.931 | INFO     | __main__:get_message_interval:27 - [POKÉMON PRODUCER] Interval = 3 sec
+2025-08-29 17:48:19.931 | INFO     | __main__:main:63 - Trainer caught Charmander using Vine Whip. Outcome: effortless.
+2025-08-29 17:48:22.932 | INFO     | __main__:main:63 - Trainer battled Eevee using Flamethrower. Outcome: epic.
+2025-08-29 17:48:24.775 | INFO     | utils.utils_logger:<module>:41 - Logging to file: logs\project_log.log
+2025-08-29 17:48:24.775 | INFO     | __main__:main:71 - START basic_consumer_pokemon...
+2025-08-29 17:48:24.775 | INFO     | __main__:main:74 - Reading file located at logs\project_log.log.
+2025-08-29 17:48:25.932 | INFO     | __main__:main:63 - Trainer battled Snorlax using Vine Whip. Outcome: close.
+2025-08-29 17:48:28.933 | INFO     | __main__:main:63 - Trainer trained Eevee using Flamethrower. Outcome: tough.
+2025-08-29 17:48:31.934 | INFO     | __main__:main:63 - Trainer trained Charmander using Sing. Outcome: epic.
+2025-08-29 17:48:34.934 | INFO     | __main__:main:63 - Trainer caught Jigglypuff using Sing. Outcome: close.
+2025-08-29 17:48:37.935 | INFO     | __main__:main:63 - Trainer encountered Jigglypuff using Sing. Outcome: close.
+2025-08-29 17:48:38.780 | INFO     | __main__:process_stream:67 - Rolling avg payload length (last 5): 55.4 chars
+2025-08-29 17:48:40.935 | INFO     | __main__:main:63 - Trainer evolved Snorlax using Sing. Outcome: epic.
+2025-08-29 17:48:43.936 | INFO     | __main__:main:63 - Trainer evolved Mewtwo using Water Gun. Outcome: epic.
+2025-08-29 17:48:46.936 | INFO     | __main__:main:63 - Trainer trained Charmander using Vine Whip. Outcome: effortless.
+2025-08-29 17:48:49.937 | INFO     | __main__:main:63 - Trainer trained Jigglypuff using Shadow Ball. Outcome: close.
+2025-08-29 17:48:50.784 | INFO     | __main__:process_stream:67 - Rolling avg payload length (last 10): 55.3 chars
+2025-08-29 17:48:52.937 | INFO     | __main__:main:63 - Trainer encountered Snorlax using Hyper Beam. Outcome: close.
+2025-08-29 17:48:55.938 | INFO     | __main__:main:63 - Trainer caught Jigglypuff using Quick Attack. Outcome: critical.
+2025-08-29 17:48:58.939 | INFO     | __main__:main:63 - Trainer trained Eevee using Vine Whip. Outcome: critical.
+2025-08-29 17:49:01.939 | INFO     | __main__:main:63 - Trainer evolved Mewtwo using Vine Whip. Outcome: hilarious.
+2025-08-29 17:49:02.788 | INFO     | __main__:process_stream:67 - Rolling avg payload length (last 15): 56.1 chars
+2025-08-29 17:49:04.939 | INFO     | __main__:main:63 - Trainer trained Pikachu using Sing. Outcome: close.
+2025-08-29 17:49:07.940 | INFO     | __main__:main:63 - Trainer caught Snorlax using Hyper Beam. Outcome: effortless.
+2025-08-29 17:49:10.941 | INFO     | __main__:main:63 - Trainer caught Squirtle using Thunderbolt. Outcome: hilarious.
+2025-08-29 17:49:13.941 | INFO     | __main__:main:63 - Trainer trained Pikachu using Vine Whip. Outcome: hilarious.
+2025-08-29 17:49:14.793 | INFO     | __main__:process_stream:67 - Rolling avg payload length (last 20): 56.2 chars
+2025-08-29 17:49:16.942 | INFO     | __main__:main:63 - Trainer evolved Snorlax using Hyper Beam. Outcome: effortless.
+2025-08-29 17:49:19.942 | INFO     | __main__:main:63 - Trainer trained Gengar using Hyper Beam. Outcome: close.
+2025-08-29 17:49:22.943 | INFO     | __main__:main:63 - Trainer evolved Gengar using Flamethrower. Outcome: hilarious.
+2025-08-29 17:49:25.943 | INFO     | __main__:main:63 - Trainer trained Bulbasaur using Vine Whip. Outcome: epic.
+2025-08-29 17:49:26.796 | INFO     | __main__:process_stream:67 - Rolling avg payload length (last 20): 56.6 chars
+2025-08-29 17:49:28.944 | INFO     | __main__:main:63 - Trainer caught Charmander using Thunderbolt. Outcome: effortless.
+2025-08-29 17:49:31.945 | INFO     | __main__:main:63 - Trainer caught Snorlax using Psychic. Outcome: hilarious.
+2025-08-29 17:49:34.945 | INFO     | __main__:main:63 - Trainer evolved Bulbasaur using Sing. Outcome: critical.
+2025-08-29 17:49:36.591 | INFO     | __main__:main:81 - END basic_consumer_pokemon.

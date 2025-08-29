@@ -71,6 +71,62 @@ source .venv/bin/activate
 python3 -m consumers.basic_consumer_case
 ```
 
+## Task 5. Run the Pokémon Producer & Consumer
+
+## Real-Time Analytics: Rolling Average of Message Length
+
+The custom consumer performs a simple real-time analytic: a **rolling average of the message payload length (in characters)**. This provides a quick, noise-reduced signal about how the shape/size of messages is changing over time.
+
+### What it does
+- Tails `logs/project_log.log` as new lines are written by the producer.
+- Extracts only the **payload** (text after the `" - "` separator added by the logger), so timestamps and levels don’t skew measurements.
+- Maintains a fixed-size window (default: last **20** messages) of payload lengths.
+- Reports the **rolling average** every **5** messages to reduce console noise.
+
+You will see output lines such as:
+
+2025-08-29 17:49:14.793 | INFO     | __main__:process_stream:67 - Rolling avg payload length (last 20): 56.2 chars
+
+2025-08-29 17:49:26.796 | INFO     | __main__:process_stream:67 - Rolling avg payload length (last 20): 56.6 chars
+
+### Why it’s useful
+- **Smoother than a single reading:** A rolling average dampens random spikes and highlights trends.
+- **Early drift detection:** If templates grow longer (e.g., added fields or richer text), the average rises; if messages become shorter or malformed, it drops.
+- **Lightweight health check:** Gives immediate feedback that the stream is active and consistent without heavy metrics infrastructure.
+
+### How to tune it
+Open your custom consumer (e.g., `consumers/basic_consumer_pokemon.py`) and adjust the window size and reporting cadence:
+```python
+# Default values shown here; increase/decrease as needed
+process_stream(str(log_file_path), window_size=20, report_every=5)
+```
+
+Windows: Terminal 1 (Producer)
+```shell
+.venv\Scripts\activate
+py -m producers.basic_producer_pokemon
+```
+
+Mac/Linux:
+```zsh
+source .venv/bin/activate
+python3 -m producers.basic_producer_pokemon
+```
+
+---
+
+Windows: Terminal 2 (Consumer)
+```shell
+.venv\Scripts\activate
+py -m consumers.basic_consumer_pokemon
+```
+
+Mac/Linux:
+```zsh
+source .venv/bin/activate
+python3 -m consumers.basic_consumer_pokemon
+```
+
 ## Save Space
 To save disk space, you can delete the .venv folder when not actively working on this project.
 We can always recreate it, activate it, and reinstall the necessary packages later. 

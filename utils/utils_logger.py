@@ -2,8 +2,8 @@
 Logger Setup Script
 File: utils/utils_logger.py
 
-This script provides logging functions for the project. 
-Logging is an essential way to track events and issues during execution. 
+This script provides logging functions for the project.
+Logging is an essential way to track events and issues during execution.
 
 Features:
 - Logs information, warnings, and errors to a designated log file.
@@ -25,6 +25,9 @@ LOG_FOLDER: pathlib.Path = pathlib.Path("logs")
 # Set the name of the log file
 LOG_FILE: pathlib.Path = LOG_FOLDER.joinpath("project_log.log")
 
+# Optional: pin a consistent file log format for easier parsing/analysis
+FILE_FORMAT = "{time:YYYY-MM-DD HH:mm:ss.SSS} | {level: <8} | {name}:{function}:{line} - {message}"
+
 # Ensure the log folder exists or create it
 try:
     LOG_FOLDER.mkdir(exist_ok=True)
@@ -32,9 +35,9 @@ try:
 except Exception as e:
     logger.error(f"Error creating log folder: {e}")
 
-# Configure Loguru to write to the log file
+# Configure Loguru to write to the log file (pinned format + UTF-8)
 try:
-    logger.add(LOG_FILE, level="INFO")
+    logger.add(LOG_FILE, level="INFO", format=FILE_FORMAT, encoding="utf-8")
     logger.info(f"Logging to file: {LOG_FILE}")
 except Exception as e:
     logger.error(f"Error configuring logger to write to file: {e}")
