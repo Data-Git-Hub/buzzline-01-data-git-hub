@@ -73,7 +73,7 @@ python3 -m consumers.basic_consumer_case
 
 ## Task 5. Run the Pokémon Producer & Consumer
 
-## Real-Time Analytics: Rolling Average of Message Length
+## Real-Time Analytics: Rolling Average of Message Length  (PART A)
 
 The custom consumer performs a simple real-time analytic: a **rolling average of the message payload length (in characters)**. This provides a quick, noise-reduced signal about how the shape/size of messages is changing over time.
 
@@ -101,10 +101,9 @@ Open your custom consumer (e.g., `consumers/basic_consumer_pokemon.py`) and adju
 process_stream(str(log_file_path), window_size=20, report_every=5)
 ```
 
-### Real-Time Alerts: Keyword/Pattern Matches
+### Real-Time Alerts: Keyword/Pattern Matches (PART B)
 
 The custom consumer also raises warnings when certain keywords appear in the message payload. By default, the alerts trigger on:
-
 - **"Hyper Beam"**
 - **"evolved"**
 

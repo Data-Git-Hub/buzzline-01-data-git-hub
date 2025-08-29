@@ -2,8 +2,11 @@
 basic_consumer_pokemon.py
 
 Custom consumer that tails the project log and performs lightweight real-time analytics:
-- Rolling average of payload length (characters) Add 1
-- Keyword/pattern alerts for selected events (e.g., "Hyper Beam", "evolved") Add 2
+- Rolling average of payload length (characters) PART A
+- Keyword/pattern alerts for selected events (e.g., "Hyper Beam", "evolved") PART B
+
+This version avoids "alert echo" by processing only producer messages
+(i.e., payloads that start with "Trainer ") and ignoring consumer-generated lines. 
 """
 
 # Standard library
@@ -39,8 +42,7 @@ def process_stream(log_file: str, window_size: int = 20, report_every: int = 5) 
     window: Deque[int] = deque(maxlen=window_size)
     count = 0
 
-    # --- Keyword/Pattern Alerts ---
-    # Case-insensitive, tolerant of "HyperBeam" vs "Hyper Beam"
+    # Keyword/Pattern Alerts (case-insensitive, tolerant of "HyperBeam")
     KEYWORD_PATTERNS = [
         re.compile(r"\bhyper\s*beam\b", re.IGNORECASE),
         re.compile(r"\bevolved\b", re.IGNORECASE),
@@ -61,21 +63,33 @@ def process_stream(log_file: str, window_size: int = 20, report_every: int = 5) 
             if not raw:
                 continue
 
-            # Extract the payload and compute length
             payload = extract_payload(raw)
+
+            # ---------------------------------------------
+            # IMPORTANT: Only process producer messages.
+            # Your Pokémon producer emits messages that begin with "Trainer ".
+            # This avoids re-processing our own alerts and analytics lines
+            # (which would otherwise cause the ALERT recursion observed in the last iteration P1.1).
+            # ---------------------------------------------
+            if not payload.startswith("Trainer "):
+                # Skip consumer-emitted lines like:
+                # "ALERT (keyword): ..." or "Rolling avg payload length ..."
+                continue
+
+            # Update rolling stats and print the consumed message
             length = len(payload)
             window.append(length)
             count += 1
 
             print(f"Consumed: {payload}")
 
-            # --- Keyword alerts ---
+            # Keyword alerts (on producer payload only)
             if any(p.search(payload) for p in KEYWORD_PATTERNS):
                 alert = f"ALERT (keyword): {payload}"
                 print(alert)
                 logger.warning(alert)
 
-            # --- Rolling average report ---
+            # Rolling average report
             if count % report_every == 0:
                 avg = sum(window) / len(window)
                 msg = f"Rolling avg payload length (last {len(window)}): {avg:.1f} chars"
